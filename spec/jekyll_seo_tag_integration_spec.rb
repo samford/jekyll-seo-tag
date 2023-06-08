@@ -700,4 +700,20 @@ RSpec.describe Jekyll::SeoTag do
       end
     end
   end
+
+  context "with site.self_closing_tags set to false" do
+    let(:site) { make_site("self_closing_tags" => false) }
+
+    it "omits trailing forward slash in void elements" do
+      expect(output).not_to include("/>")
+    end
+  end
+
+  context "with site.self_closing_tags set to true" do
+    let(:site) { make_site("self_closing_tags" => true) }
+
+    it "includes trailing forward slash in void elements" do
+      expect(output).to include("/>")
+    end
+  end
 end

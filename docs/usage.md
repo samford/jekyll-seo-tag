@@ -69,6 +69,8 @@ The following properties are available:
   ```
 * `locale` - The locale these tags are marked up in. Of the format `language_TERRITORY`. Default is `en_US`. Takes priority
 over existing config key `lang`.
+* `self_closing_tags` - A boolean indicating whether to self-close void HTML elements (e.g., `link`). This will be
+treated as `true` by default.
 
 The SEO tag will respect the following YAML front matter if included in a post, page, or document:
 
