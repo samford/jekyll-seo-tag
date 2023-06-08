@@ -33,6 +33,14 @@ module Jekyll
         @display_title = (@text !~ %r!title=false!i)
       end
 
+      # Should generated void elements use self-closing syntax?
+      def self_close?
+        # return true unless self_close == false
+        return @self_close_tags if defined?(@self_close_tags)
+
+        @self_close_tags = (@text !~ %r!self_close=false!i)
+      end
+
       def site_title
         @site_title ||= format_string(site["title"] || site["name"])
       end

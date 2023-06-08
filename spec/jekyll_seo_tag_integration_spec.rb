@@ -608,6 +608,22 @@ RSpec.describe Jekyll::SeoTag do
     end
   end
 
+  context "with self_close=false" do
+    let(:text) { "self_close=false" }
+
+    it "omits trailing forward slash in void elements" do
+      expect(output).not_to include("/>")
+    end
+  end
+
+  context "with self_close=true" do
+    let(:text) { "self_close=true" }
+
+    it "includes trailing forward slash in void elements" do
+      expect(output).to include("/>")
+    end
+  end
+
   context "with pagination" do
     let(:context) { make_context({}, "paginator" => paginator) }
 
